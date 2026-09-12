@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prabhat Kumar Jha — Retrieval &amp; ML Systems Engineer</title>
-<meta name="description" content="Prabhat Kumar Jha builds and operates retrieval pipelines in production for regulated domains — aviation safety, compliance and financial services. Currently AI Operations at Bread Financial.">
+<meta name="description" content="Prabhat Kumar Jha builds and operates production retrieval pipelines for regulated domains — aviation safety, compliance and financial services. Currently AI Operations at Bread Financial.">
 <meta name="author" content="Prabhat Kumar Jha">
+<meta name="theme-color" content="#1A4FA0">
 <meta property="og:title" content="Prabhat Kumar Jha — Retrieval &amp; ML Systems Engineer">
 <meta property="og:description" content="Production retrieval pipelines for regulated domains. AI Operations at Bread Financial; previously Airports Authority of India.">
 <meta property="og:type" content="profile">
@@ -15,54 +16,77 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── DESIGN TOKENS ────────────────────────────────────────────
+   Neutral slate scale + a single professional blue accent.
+   Semantic colours are kept separate from the accent.          */
 :root {
-  --bg:        #F4F6F7;
-  --surface:   #FFFFFF;
-  --surface-2: #EDF0F2;
-  --ink:       #14181C;
-  --ink-2:     #4E5A64;
-  --ink-3:     #74838F;
-  --rule:      #DCE2E6;
-  --rule-soft: #E8ECEF;
-  --accent:    #0B5C6B;
-  --accent-2:  #0A4C59;
-  --accent-bg: #E2EEF0;
-  --on-accent: #FFFFFF;
-  --shadow:    0 1px 2px rgba(20, 24, 28, .04), 0 4px 16px rgba(20, 24, 28, .05);
-  --maxw:      1060px;
+  --bg:         #F4F6FA;
+  --surface:    #FFFFFF;
+  --surface-2:  #EDF1F6;
+  --surface-3:  #E4EAF2;
+
+  --ink:        #0F1724;
+  --ink-2:      #45546B;
+  --ink-3:      #6A7A91;
+
+  --rule:       #D6DEE8;
+  --rule-soft:  #E5EBF2;
+
+  --accent:     #1A4FA0;
+  --accent-2:   #143D7D;
+  --accent-bg:  #E3EDFC;
+  --on-accent:  #FFFFFF;
+
+  --good:       #196B4D;
+  --good-bg:    #E1F2EA;
+
+  --shadow-sm:  0 1px 2px rgba(15, 23, 36, .05);
+  --shadow:     0 1px 2px rgba(15, 23, 36, .04), 0 6px 20px rgba(15, 23, 36, .06);
+  --radius:     6px;
+  --maxw:       1080px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:        #0E1317;
-    --surface:   #161C21;
-    --surface-2: #1A2128;
-    --ink:       #E4E9ED;
-    --ink-2:     #A7B4BE;
-    --ink-3:     #7C8A95;
-    --rule:      #263038;
-    --rule-soft: #1E272E;
-    --accent:    #63BDCC;
-    --accent-2:  #8AD2DE;
-    --accent-bg: #10323A;
-    --on-accent: #0E1317;
-    --shadow:    0 1px 2px rgba(0, 0, 0, .3), 0 4px 18px rgba(0, 0, 0, .28);
+    --bg:         #0B1017;
+    --surface:    #131B26;
+    --surface-2:  #18212E;
+    --surface-3:  #1E2937;
+
+    --ink:        #E6EBF3;
+    --ink-2:      #A4B1C4;
+    --ink-3:      #7B8A9E;
+
+    --rule:       #26313F;
+    --rule-soft:  #1D2733;
+
+    --accent:     #74A9FF;
+    --accent-2:   #9DC5FF;
+    --accent-bg:  #12243D;
+    --on-accent:  #0B1017;
+
+    --good:       #58C79B;
+    --good-bg:    #0F2A21;
+
+    --shadow-sm:  0 1px 2px rgba(0, 0, 0, .35);
+    --shadow:     0 1px 2px rgba(0, 0, 0, .3), 0 6px 22px rgba(0, 0, 0, .32);
   }
 }
 
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; animation: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16.5px;
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: 28px; }
@@ -74,11 +98,12 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
 /* ── HEADER ───────────────────────────────── */
 header.site {
   position: sticky; top: 0; z-index: 50;
-  background: var(--bg);
+  background: var(--surface);
   border-bottom: 1px solid var(--rule);
+  box-shadow: var(--shadow-sm);
 }
 .header-inner {
-  max-width: var(--maxw); margin: 0 auto; padding: 13px 28px;
+  max-width: var(--maxw); margin: 0 auto; padding: 12px 28px;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   position: relative;
 }
@@ -87,55 +112,63 @@ header.site {
   letter-spacing: -.01em; color: var(--ink); text-decoration: none;
 }
 .brand span { color: var(--ink-3); font-weight: 500; }
-nav ul { display: flex; gap: 26px; list-style: none; }
+nav ul { display: flex; gap: 4px; list-style: none; }
 nav a {
-  font-size: .84rem; color: var(--ink-2); text-decoration: none;
-  font-weight: 500; letter-spacing: .01em;
+  display: block; font-size: .84rem; color: var(--ink-2); text-decoration: none;
+  font-weight: 500; padding: 6px 11px; border-radius: 4px;
+  transition: background-color .15s, color .15s;
 }
-nav a:hover { color: var(--accent); }
+nav a:hover { color: var(--accent); background: var(--accent-bg); }
 .menu-btn {
-  display: none; background: none; border: 1px solid var(--rule); color: var(--ink-2);
+  display: none; background: var(--surface-2); border: 1px solid var(--rule); color: var(--ink-2);
   font-family: 'IBM Plex Mono', monospace; font-size: .74rem; letter-spacing: .08em;
-  text-transform: uppercase; padding: 6px 10px; cursor: pointer; border-radius: 3px;
+  text-transform: uppercase; padding: 7px 11px; cursor: pointer; border-radius: 4px;
 }
 
 /* ── HERO ─────────────────────────────────── */
-.hero { padding-block: 78px 64px; border-bottom: 1px solid var(--rule); }
+.hero { padding-block: 76px 62px; border-bottom: 1px solid var(--rule); }
 .eyebrow {
   font-family: 'IBM Plex Mono', monospace; font-size: .73rem; letter-spacing: .15em;
-  text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.pill {
+  font-family: 'IBM Plex Mono', monospace; font-size: .69rem; letter-spacing: .08em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+  background: var(--good-bg); color: var(--good); border: 1px solid transparent;
 }
 h1 {
   font-family: 'Archivo', sans-serif; font-weight: 700;
-  font-size: clamp(2.1rem, 5.2vw, 3.35rem); line-height: 1.08;
+  font-size: clamp(2.1rem, 5.2vw, 3.3rem); line-height: 1.08;
   letter-spacing: -.022em; margin-bottom: 22px; max-width: 21ch; text-wrap: balance;
 }
-.lede { font-size: 1.08rem; color: var(--ink-2); max-width: 62ch; }
+.lede { font-size: 1.07rem; color: var(--ink-2); max-width: 62ch; }
 .lede + .lede { margin-top: 15px; }
 .lede strong { color: var(--ink); font-weight: 600; }
-.hero-links { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 32px; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
 .btn {
   display: inline-block; font-size: .87rem; font-weight: 500; text-decoration: none;
-  padding: 9px 17px; border-radius: 3px; border: 1px solid var(--rule); color: var(--ink-2);
-  background: var(--surface); transition: border-color .15s, color .15s;
+  padding: 9px 17px; border-radius: 5px; border: 1px solid var(--rule); color: var(--ink-2);
+  background: var(--surface); box-shadow: var(--shadow-sm);
+  transition: border-color .15s, color .15s, background-color .15s;
 }
-.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
 .btn-solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn-solid:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--on-accent); }
 
 /* ── SECTIONS ─────────────────────────────── */
-section { padding-block: 58px; border-bottom: 1px solid var(--rule); }
+section { padding-block: 56px; border-bottom: 1px solid var(--rule); }
 .sec-label {
   font-family: 'IBM Plex Mono', monospace; font-size: .73rem; letter-spacing: .15em;
-  text-transform: uppercase; color: var(--ink-3); margin-bottom: 11px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 500;
 }
 h2 {
   font-family: 'Archivo', sans-serif; font-weight: 600;
-  font-size: clamp(1.4rem, 3vw, 1.85rem); line-height: 1.18;
-  letter-spacing: -.012em; margin-bottom: 30px; text-wrap: balance;
+  font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.18;
+  letter-spacing: -.012em; margin-bottom: 28px; text-wrap: balance;
 }
 h3 {
-  font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.18rem;
+  font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 1.16rem;
   line-height: 1.25; letter-spacing: -.008em;
 }
 p + p { margin-top: 13px; }
@@ -151,29 +184,29 @@ p + p { margin-top: 13px; }
 .role li { position: relative; padding-left: 17px; color: var(--ink-2); font-size: .96rem; }
 .role li::before {
   content: ''; position: absolute; left: 0; top: .62em;
-  width: 5px; height: 1px; background: var(--accent);
+  width: 6px; height: 2px; border-radius: 1px; background: var(--accent);
 }
 .role li strong { color: var(--ink); font-weight: 600; }
 
 /* ── WORK ─────────────────────────────────── */
 .feature {
-  background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
-  padding: 30px 32px; box-shadow: var(--shadow); margin-bottom: 26px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 30px 32px; box-shadow: var(--shadow); margin-bottom: 24px;
 }
 .feature-head { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
-.feature-head h3 { font-size: 1.34rem; }
+.feature-head h3 { font-size: 1.32rem; }
 .feature-links { display: flex; flex-wrap: wrap; gap: 15px; font-family: 'IBM Plex Mono', monospace; font-size: .79rem; }
 .feature p { color: var(--ink-2); font-size: .98rem; }
 .feature p strong { color: var(--ink); font-weight: 600; }
 
 .chain {
   font-family: 'IBM Plex Mono', monospace; font-size: .78rem; color: var(--ink-2);
-  background: var(--surface-2); border: 1px solid var(--rule-soft); border-radius: 3px;
+  background: var(--surface-2); border: 1px solid var(--rule-soft); border-radius: 5px;
   padding: 13px 15px; margin-block: 20px; line-height: 2;
 }
 .chain b { color: var(--accent); font-weight: 500; }
 
-.table-wrap { overflow-x: auto; margin-block: 22px; border: 1px solid var(--rule); border-radius: 3px; }
+.table-wrap { overflow-x: auto; margin-block: 22px; border: 1px solid var(--rule); border-radius: 5px; background: var(--surface); }
 table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 caption {
   caption-side: top; text-align: left; padding: 11px 15px; background: var(--surface-2);
@@ -193,12 +226,13 @@ tr.highlight td { color: var(--ink); font-weight: 600; background: var(--accent-
 .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
 .tag {
   font-family: 'IBM Plex Mono', monospace; font-size: .73rem; color: var(--ink-2);
-  border: 1px solid var(--rule); border-radius: 3px; padding: 3px 9px; background: var(--surface-2);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 3px 9px; background: var(--surface-2);
 }
 
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
-.card { background: var(--surface); padding: 22px 24px; display: flex; flex-direction: column; gap: 9px; }
-.card h3 { font-size: 1.03rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(272px, 100%), 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.card { background: var(--surface); padding: 22px 24px; display: flex; flex-direction: column; gap: 9px; transition: background-color .15s; }
+.card:hover { background: var(--surface-2); }
+.card h3 { font-size: 1.02rem; }
 .card p { font-size: .92rem; color: var(--ink-2); flex: 1; }
 .card-links { font-family: 'IBM Plex Mono', monospace; font-size: .77rem; display: flex; gap: 14px; flex-wrap: wrap; color: var(--ink-3); }
 
@@ -212,19 +246,31 @@ tr.highlight td { color: var(--ink); font-weight: 600; background: var(--accent-
 }
 .stack-row .v { color: var(--ink-2); font-size: .95rem; }
 
-/* ── BACKGROUND ───────────────────────────── */
-.bg-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 42px; }
-.bg-grid p { color: var(--ink-2); }
-.credentials { display: flex; flex-direction: column; }
-.cred {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-  padding-block: 11px; border-top: 1px solid var(--rule-soft);
+/* ── RECOGNITION ──────────────────────────── */
+.bio { max-width: 66ch; margin-bottom: 34px; }
+.bio p { color: var(--ink-2); font-size: 1rem; }
+
+.rec-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 22px; }
+.rec-group {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); overflow: hidden;
 }
-.cred:first-child { border-top: 0; padding-top: 0; }
-.cred .what { font-size: .93rem; color: var(--ink-2); }
-.cred .val {
-  font-family: 'IBM Plex Mono', monospace; font-size: .88rem; color: var(--ink);
-  font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500;
+.rec-group h3 {
+  font-size: .8rem; font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+  padding: 12px 18px; background: var(--surface-2); border-bottom: 1px solid var(--rule);
+}
+.rec-group dl { padding: 4px 18px 14px; }
+.rec-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
+  padding-block: 10px; border-top: 1px solid var(--rule-soft);
+}
+.rec-row:first-of-type { border-top: 0; }
+.rec-row dt { font-size: .92rem; color: var(--ink-2); }
+.rec-row dt small { display: block; color: var(--ink-3); font-size: .79rem; }
+.rec-row dd {
+  font-family: 'IBM Plex Mono', monospace; font-size: .87rem; color: var(--ink);
+  font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; text-align: right;
 }
 
 /* ── CONTACT ──────────────────────────────── */
@@ -232,15 +278,12 @@ tr.highlight td { color: var(--ink); font-weight: 600; background: var(--accent-
 #contact p { color: var(--ink-2); max-width: 58ch; font-size: 1.02rem; }
 
 footer {
-  padding-block: 30px; border-top: 1px solid var(--rule);
+  padding-block: 28px; border-top: 1px solid var(--rule);
   font-family: 'IBM Plex Mono', monospace; font-size: .77rem; color: var(--ink-3);
   display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between;
 }
 
 /* ── RESPONSIVE ───────────────────────────── */
-@media (max-width: 860px) {
-  .bg-grid { grid-template-columns: 1fr; gap: 30px; }
-}
 @media (max-width: 480px) {
   .brand span { display: none; }
 }
@@ -249,16 +292,17 @@ footer {
   .menu-btn { display: block; }
   nav {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--surface); border-bottom: 1px solid var(--rule);
+    background: var(--surface); border-bottom: 1px solid var(--rule); box-shadow: var(--shadow);
   }
   nav.open { display: block; }
   nav ul { flex-direction: column; gap: 0; padding: 6px 20px 14px; }
   nav li { border-top: 1px solid var(--rule-soft); }
-  nav a { display: block; padding: 11px 0; font-size: .93rem; }
+  nav a { padding: 11px 0; font-size: .93rem; border-radius: 0; }
+  nav a:hover { background: transparent; }
   .role, .stack-row { grid-template-columns: 1fr; gap: 10px; }
   .feature { padding: 24px 20px; }
-  .hero { padding-block: 52px 46px; }
-  section { padding-block: 44px; }
+  .hero { padding-block: 50px 44px; }
+  section { padding-block: 42px; }
 }
 </style>
 </head>
@@ -273,7 +317,7 @@ footer {
         <li><a href="#experience">Experience</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#stack">Stack</a></li>
-        <li><a href="#background">Background</a></li>
+        <li><a href="#recognition">Recognition</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -284,7 +328,7 @@ footer {
 
   <div class="wrap">
     <section class="hero">
-      <div class="eyebrow">Bengaluru, India</div>
+      <div class="eyebrow">Bengaluru, India <span class="pill">Bread Financial</span></div>
       <h1>Retrieval systems for domains where a missed document has a cost.</h1>
       <p class="lede">
         I build and operate production retrieval pipelines. Currently <strong>Senior Associate, AI Operations
@@ -445,19 +489,19 @@ footer {
           <div class="card-links"><a href="https://github.com/PKjha720/yt-comment-sentiment-analysis" target="_blank" rel="noopener">GitHub</a></div>
         </div>
         <div class="card">
-          <h3>Route optimisation</h3>
+          <h3>ATS resume matcher</h3>
           <p>
-            Algorithmic route optimisation for logistics planning, applying operations-research methods to a
-            scheduling problem with real constraints.
+            Resume-to-job-description matching built on the Gemini API, with structured scoring output rather
+            than free-text commentary.
           </p>
-          <div class="card-links"><a href="https://github.com/PKjha720/Route-optimization" target="_blank" rel="noopener">GitHub</a></div>
+          <div class="card-links"><a href="https://github.com/PKjha720/ATS-tracking-LLM-with-Google-Gemini-Pro" target="_blank" rel="noopener">GitHub</a></div>
         </div>
         <div class="card">
           <h3>Pneumatic gear shifter, Formula Student</h3>
           <p>
             Replaced the mechanical gear linkage on a 390cc Formula Student car with a solenoid-actuated
             pneumatic system, sized against a measured 250 N shift force and closed in software on an Arduino
-            reading the engine's gear-position sensor. AIR 4 in the Design Event, Formula Student India 2017.
+            reading the engine's gear-position sensor.
           </p>
           <div class="card-links">Festo FluidSIM · SolidWorks · FEA</div>
         </div>
@@ -495,36 +539,65 @@ footer {
   </div>
 
   <div class="wrap">
-    <section id="background">
-      <div class="sec-label">Background</div>
-      <h2>How I got to retrieval.</h2>
-      <div class="bg-grid">
-        <div>
-          <p>
-            I trained as a mechanical engineer and came to machine learning through the problem rather than the
-            other way round. Four years of working with aviation regulatory documents at AAI is what made
-            retrieval interesting to me: the corpus is large, the language is unforgiving, and being
-            approximately right is not useful to anyone.
-          </p>
-          <p>
-            The engineering habits transferred better than I expected. Sizing an actuator against a measured
-            load and sizing a reranker against a measured latency budget are the same discipline. You establish
-            what the system actually has to do, then prove that it does it.
-          </p>
-          <p>
-            Earlier, at BIT Mesra, I led the pneumatics subsystem on the Formula Student team, raised ₹11 lakh
-            in sponsorship across two campaigns, and trained roughly 40 students a year on vehicle design,
-            fabrication and competition documentation.
-          </p>
+    <section id="recognition">
+      <div class="sec-label">Recognition</div>
+      <h2>How I got to retrieval, and what I picked up on the way.</h2>
+      <div class="bio">
+        <p>
+          I trained as a mechanical engineer and came to machine learning through the problem rather than the
+          other way round. Four years of working with aviation regulatory documents at AAI is what made
+          retrieval interesting to me: the corpus is large, the language is unforgiving, and being
+          approximately right is not useful to anyone.
+        </p>
+        <p>
+          The engineering habits transferred better than I expected. Sizing an actuator against a measured load
+          and sizing a reranker against a measured latency budget are the same discipline. You establish what
+          the system actually has to do, then prove that it does it.
+        </p>
+      </div>
+      <div class="rec-groups">
+
+        <div class="rec-group">
+          <h3>Competitive examinations</h3>
+          <dl>
+            <div class="rec-row"><dt>AAI national recruitment<small>Junior Executive (Technical), 150,000+ candidates</small></dt><dd>AIR 3<br>105/120</dd></div>
+            <div class="rec-row"><dt>GATE CS/IT, 2022</dt><dd>99.28 %ile</dd></div>
+            <div class="rec-row"><dt>GATE CS/IT, 2021</dt><dd>99.16 %ile</dd></div>
+            <div class="rec-row"><dt>GATE Data Science &amp; AI</dt><dd>Qualified</dd></div>
+            <div class="rec-row"><dt>HPCL Graduate Engineer Trainee</dt><dd>165/170</dd></div>
+          </dl>
         </div>
-        <div class="credentials">
-          <div class="cred"><span class="what">B.E. Mechanical Engineering, BIT Mesra</span><span class="val">2014–18</span></div>
-          <div class="cred"><span class="what">CGPA, university batch topper</span><span class="val">8.32/10</span></div>
-          <div class="cred"><span class="what">GATE CS/IT</span><span class="val">99.28 %ile</span></div>
-          <div class="cred"><span class="what">AAI national recruitment exam</span><span class="val">AIR 3</span></div>
-          <div class="cred"><span class="what">Formula Student India, Design Event</span><span class="val">AIR 4</span></div>
-          <div class="cred"><span class="what">Tata Millennial Scholarship</span><span class="val">4 years</span></div>
+
+        <div class="rec-group">
+          <h3>Standardised tests</h3>
+          <dl>
+            <div class="rec-row"><dt>GRE General<small>Quantitative 170 · Verbal 169 · 99th percentile</small></dt><dd>339/340</dd></div>
+            <div class="rec-row"><dt>TOEFL iBT</dt><dd>110/120</dd></div>
+            <div class="rec-row"><dt>JEE Main, 2014<small>Of 1.36 million candidates</small></dt><dd>99.85 %ile</dd></div>
+            <div class="rec-row"><dt>JEE Advanced, 2014</dt><dd>Top 0.7%</dd></div>
+          </dl>
         </div>
+
+        <div class="rec-group">
+          <h3>Academic</h3>
+          <dl>
+            <div class="rec-row"><dt>B.E. Mechanical Engineering<small>Birla Institute of Technology, Mesra · 2014–18</small></dt><dd>8.32/10</dd></div>
+            <div class="rec-row"><dt>University batch topper<small>First student placed in the batch</small></dt><dd>Rank 1</dd></div>
+            <div class="rec-row"><dt>IIT Delhi M.Tech, AI &amp; Data Science<small>Admitted 2022, declined</small></dt><dd>Admit</dd></div>
+            <div class="rec-row"><dt>Tata Millennial Scholarship</dt><dd>4 years</dd></div>
+          </dl>
+        </div>
+
+        <div class="rec-group">
+          <h3>Formula Student India, 2017</h3>
+          <dl>
+            <div class="rec-row"><dt>Design Event<small>Pneumatic shifting system as the team's differentiator</small></dt><dd>AIR 4</dd></div>
+            <div class="rec-row"><dt>Overall standing</dt><dd>AIR 7</dd></div>
+            <div class="rec-row"><dt>Sponsorship raised<small>Independently, across two campaigns</small></dt><dd>₹11 lakh</dd></div>
+            <div class="rec-row"><dt>Students trained<small>Vehicle design, fabrication, documentation</small></dt><dd>~40/yr</dd></div>
+          </dl>
+        </div>
+
       </div>
     </section>
   </div>
