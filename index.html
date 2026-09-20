@@ -437,7 +437,10 @@ footer {
           <strong>The decisive stage was ingestion, not retrieval architecture.</strong> Standard PDF extraction
           flattens tables into prose, so no table reached the index as a table. After rebuilding ingestion to
           preserve them, table-evidence queries still retrieve at 0.675 Recall@5 against 0.925 for prose
-          (p = 0.010), and 0.500 against 0.875 under dense retrieval alone (p = 0.0006). Neither fusion nor
+          (p = 0.010), and 0.500 against 0.875 under dense retrieval alone (p = 0.0006). That gap is confounded
+          with chunk length &mdash; table chunks are longer by construction, and table chunks under the
+          embedder&rsquo;s 256-token limit retrieve at 1.000 (full pipeline), indistinguishable from prose; see the
+          <a href="https://github.com/PKjha720/aviation-rag#readme">repository README</a>. Neither fusion nor
           reranking closes that gap. Since 21% of the corpus pages carry no text layer at all, a benchmark built
           from the index cannot see what ingestion discarded, which is the argument for reporting a coverage
           audit alongside recall.
